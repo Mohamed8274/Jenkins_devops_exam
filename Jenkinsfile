@@ -4,10 +4,10 @@ DOCKER_ID = "united74" // replace this with your docker-id
 DOCKER_TAG = "v.${BUILD_ID}.0" // we will tag our images with the current build in order to increment the value by 1 with each new build
 DOCKER_IMAGE_MOVIE = "movie-service"
 DOCKER_IMAGE_CAST = "cast-service"
-NODEPORT_DEV = 30000
-NODEPORT_STAGING = 30001
-NODEPORT_PROD = 30002
-NODEPORT_QA = 30003
+// NODEPORT_DEV = 30000
+// NODEPORT_STAGING = 30001
+// NODEPORT_PROD = 30002
+// NODEPORT_QA = 30003
 KUBECONFIG = credentials("config") // we retrieve  kubeconfig from secret file called config saved on jenkins
 }
 agent any // Jenkins will be able to select all available agents
@@ -123,8 +123,9 @@ stages {
       cp fastapiapp/values-dev.yaml values.yml
       cat values.yml
       sed -i "s+tag.*+tag: ${DOCKER_TAG}+g" values.yml
-      helm upgrade --install fastapp fastapiapp --values=values.yml --namespace dev --set movie.image.repository="$DOCKER_ID/$DOCKER_IMAGE_MOVIE" --set cast.image.repository="$DOCKER_ID/$DOCKER_IMAGE_CAST" --set movie.image.tag="$DOCKER_TAG" --set cast.image.tag="$DOCKER_TAG" --set service.nodePort="$NODEPORT_DEV"
+      helm upgrade --install fastapp fastapiapp --values=values.yml --namespace dev --set movie.image.tag="$DOCKER_TAG" --set cast.image.tag="$DOCKER_TAG"
       '''
+      // --set movie.image.repository="$DOCKER_ID/$DOCKER_IMAGE_MOVIE" --set cast.image.repository="$DOCKER_ID/$DOCKER_IMAGE_CAST"  --set service.nodePort="$NODEPORT_DEV"
       }
     }
   }
