@@ -5,10 +5,11 @@ metadata:
   labels:
     app: movie-service
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: movie-service
   ports:
-    - protocol: TCP
+    - name: http
+      protocol: TCP
       port: 80
       targetPort: {{ .Values.movie.port }}
