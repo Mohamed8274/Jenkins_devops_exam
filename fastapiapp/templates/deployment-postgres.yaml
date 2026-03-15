@@ -34,4 +34,4 @@ spec:
       volumes:
         - name: postgres
           persistentVolumeClaim:
-            claimName: {{ .Release.Name }}-{{ .Chart.Name }}-pvc # pvc-postgres-{{ .Release.Namespace }}
+            claimName: pvc-postgres-{{ .Release.Namespace }}

@@ -31,4 +31,4 @@ spec:
       volumes:
         - name: cast-volume
           persistentVolumeClaim:
-            claimName: {{ .Release.Name }}-{{ .Chart.Name }}-pvc # pvc-cast-{{ .Release.Namespace }}
+            claimName: pvc-cast-{{ .Release.Namespace }}
