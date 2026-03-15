@@ -33,3 +33,4 @@ ingress:
 persistence:
   size: 5Gi
   storageClass: local-path
+  existingClaim: fastapp-pvc

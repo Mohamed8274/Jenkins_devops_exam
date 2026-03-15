@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ .Release.Name }}-pvc
+  name: pvc-cast-{{ .Release.Namespace }} # {{ .Release.Name }}-pvc 
   labels:
     app: cast-service
 spec:
