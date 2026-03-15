@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cast-service
+  labels: 
+    app: cast-service
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: cast-service
+  template:
+    metadata:
+      labels:
+        app: cast-service
+    spec:
+      containers:
+        - name: cast-service
+          image: "{{ .Values.cast.image.repository }}:{{ .Values.cast.image.tag }}"
+          ports:
+            - containerPort: {{ .Values.cast.port }}
+          imagePullPolicy: {{ .Values.global.imagePullPolicy }}
+          env:
+            - name: MOVIE_SERVICE_URL
+              value: "http://movie-service"
+          volumeMounts:
+            - name: cast-volume
+              mountPath: /app/data
+      volumes:
+        - name: cast-volume
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-pvc

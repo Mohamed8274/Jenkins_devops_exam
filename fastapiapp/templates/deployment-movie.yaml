@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-service
+  labels: 
+    app: movie-service
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: movie-service
+  template:
+    metadata:
+      labels:
+        app: movie-service
+    spec:
+      containers:
+        - name: movie-service
+          image: "{{ .Values.movie.image.repository }}:{{ .Values.movie.image.tag }}"
+          ports:
+            - containerPort: {{ .Values.movie.port }}
+          imagePullPolicy: {{ .Values.global.imagePullPolicy }}
+          env:
+            - name: DATABASE_URL
+              value: "postgresql://{{ .Values.postgres.env.POSTGRES_USER }}:{{ .Values.postgres.env.POSTGRES_PASSWORD }}@postgres:{{ .Values.postgres.port }}/{{ .Values.postgres.env.POSTGRES_DB }}"
+          volumeMounts:
+            - name: movie-volume
+              mountPath: /app/data
+      volumes:
+        - name: movie-volume
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-pvc
+

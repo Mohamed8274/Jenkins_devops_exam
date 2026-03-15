@@ -1,0 +1,35 @@
+global:
+  imagePullPolicy: IfNotPresent
+
+movie:
+  image:
+    repository: united74/movie-service
+    tag: latest
+  port: 8000
+
+cast:
+  image:
+    repository: united74/cast-service
+    tag: latest
+  port: 8001
+
+postgres:
+  image: postgres:12.1-alpine
+  port: 5432
+  env:
+    POSTGRES_USER: username
+    POSTGRES_PASSWORD: password
+    POSTGRES_DB: db
+
+nginx:
+  image: nginx:alpine
+  port: 80
+
+ingress:
+  enabled: false
+  className: traefik
+  host: 
+
+persistence:
+  size: 5Gi
+  storageClass: local-path
