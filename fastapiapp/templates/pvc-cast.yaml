@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-cast-{{ .Release.Namespace }} # {{ .Release.Name }}-pvc // {{ .Release.Name }}-{{ .Chart.Name }}-pvc
+  name: {{ .Release.Name }}-{{ .Chart.Name }}-pvc # pvc-cast-{{ .Release.Namespace }} # {{ .Release.Name }}-pvc // {{ .Release.Name }}-{{ .Chart.Name }}-pvc
   labels:
-    app: cast-service # {{ .Chart.Name }}
+    app:  cast-service
 spec:
   storageClassName: {{ .Values.persistence.storageClass }}
   accessModes:

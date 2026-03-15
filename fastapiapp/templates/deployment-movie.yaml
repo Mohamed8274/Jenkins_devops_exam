@@ -31,5 +31,5 @@ spec:
       volumes:
         - name: movie-volume
           persistentVolumeClaim:
-            claimName: pvc-movie-{{ .Release.Namespace }}
+            claimName: {{ .Release.Name }}-{{ .Chart.Name }}-pvc # pvc-movie-{{ .Release.Namespace }}
 
