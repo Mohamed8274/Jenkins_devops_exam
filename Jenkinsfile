@@ -123,8 +123,9 @@ stages {
       cp fastapiapp/values-dev.yaml values.yml
       cat values.yml
       sed -i "s+tag.*+tag: ${DOCKER_TAG}+g" values.yml
-      helm upgrade --install fastapp fastapiapp --values=values.yml --namespace dev --set movie.image.tag="$DOCKER_TAG" --set cast.image.tag="$DOCKER_TAG" --set movie.image.repository="$DOCKER_ID/$DOCKER_IMAGE_MOVIE" --set cast.image.repository="$DOCKER_ID/$DOCKER_IMAGE_CAST"  --set service.nodePort="$NODEPORT_DEV"
+      helm upgrade --install fastapp fastapiapp --values=values.yml --namespace dev --set movie.image.tag="$DOCKER_TAG" --set cast.image.tag="$DOCKER_TAG" --set movie.image.repository="$DOCKER_ID/$DOCKER_IMAGE_MOVIE" --set cast.image.repository="$DOCKER_ID/$DOCKER_IMAGE_CAST"
       '''
+      // --set service.nodePort="$NODEPORT_DEV"
       }
     }
   }
@@ -139,8 +140,9 @@ stages {
       cp fastapiapp/values-qa.yaml values.yml
       cat values.yml
       sed -i "s+tag.*+tag: ${DOCKER_TAG}+g" values.yml
-      helm upgrade --install fastapp fastapiapp --values=values.yml --namespace qa --set movie.image.repository="$DOCKER_ID/$DOCKER_IMAGE_MOVIE" --set cast.image.repository="$DOCKER_ID/$DOCKER_IMAGE_CAST" --set movie.image.tag="$DOCKER_TAG" --set cast.image.tag="$DOCKER_TAG" --set service.nodePort="$NODEPORT_QA"
+      helm upgrade --install fastapp fastapiapp --values=values.yml --namespace qa --set movie.image.repository="$DOCKER_ID/$DOCKER_IMAGE_MOVIE" --set cast.image.repository="$DOCKER_ID/$DOCKER_IMAGE_CAST" --set movie.image.tag="$DOCKER_TAG" --set cast.image.tag="$DOCKER_TAG"
       '''
+      // --set service.nodePort="$NODEPORT_QA"
       }
     }
   }
@@ -155,8 +157,9 @@ stages {
       cp fastapiapp/values-staging.yaml values.yml
       cat values.yml
       sed -i "s+tag.*+tag: ${DOCKER_TAG}+g" values.yml
-      helm upgrade --install fastapp fastapiapp --values=values.yml --namespace staging --set movie.image.repository="$DOCKER_ID/$DOCKER_IMAGE_MOVIE" --set cast.image.repository="$DOCKER_ID/$DOCKER_IMAGE_CAST" --set movie.image.tag="$DOCKER_TAG" --set cast.image.tag="$DOCKER_TAG" --set service.nodePort="$NODEPORT_STAGING"
+      helm upgrade --install fastapp fastapiapp --values=values.yml --namespace staging --set movie.image.repository="$DOCKER_ID/$DOCKER_IMAGE_MOVIE" --set cast.image.repository="$DOCKER_ID/$DOCKER_IMAGE_CAST" --set movie.image.tag="$DOCKER_TAG" --set cast.image.tag="$DOCKER_TAG"
       '''
+      // --set service.nodePort="$NODEPORT_STAGING"
       }
     }
   }
@@ -176,8 +179,9 @@ stages {
         cp fastapiapp/values-prod.yaml values.yml
         cat values.yml
         sed -i "s+tag.*+tag: ${DOCKER_TAG}+g" values.yml
-        helm upgrade --install fastapp fastapiapp --values=values.yml --namespace prod --set movie.image.repository="$DOCKER_ID/$DOCKER_IMAGE_MOVIE" --set cast.image.repository="$DOCKER_ID/$DOCKER_IMAGE_CAST" --set movie.image.tag="$DOCKER_TAG" --set cast.image.tag="$DOCKER_TAG" --set service.nodePort="$NODEPORT_PROD"
+        helm upgrade --install fastapp fastapiapp --values=values.yml --namespace prod --set movie.image.repository="$DOCKER_ID/$DOCKER_IMAGE_MOVIE" --set cast.image.repository="$DOCKER_ID/$DOCKER_IMAGE_CAST" --set movie.image.tag="$DOCKER_TAG" --set cast.image.tag="$DOCKER_TAG"
         '''
+        // --set service.nodePort="$NODEPORT_PROD"
       }
     }
   }
