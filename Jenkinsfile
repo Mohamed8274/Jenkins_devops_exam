@@ -8,7 +8,7 @@ DOCKER_IMAGE_CAST = "cast-service"
 // NODEPORT_STAGING = 30001
 // NODEPORT_PROD = 30002
 // NODEPORT_QA = 30003
-KUBECONFIG = credentials("config") // we retrieve  kubeconfig from secret file called config saved on jenkins
+KUBECONFIG = credentials("configue") // we retrieve  kubeconfig from secret file called config saved on jenkins
 }
 agent any // Jenkins will be able to select all available agents
 stages {
