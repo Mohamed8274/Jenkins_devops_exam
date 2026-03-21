@@ -27,7 +27,6 @@ nginx:
   port: 80
 
 ingress:
-  enabled: true
   className: traefik
   host: qa.albay.ip-ddns.com
 
