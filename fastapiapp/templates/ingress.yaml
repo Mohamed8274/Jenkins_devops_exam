@@ -16,5 +16,5 @@ spec:
                 name: nginx
                 port:
                   name: http
-                  # number: {{ .Values.nginx.port }}
+                  number: {{ .Values.nginx.port }}
 {{- end }}
