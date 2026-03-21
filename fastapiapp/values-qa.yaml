@@ -25,6 +25,7 @@ postgres:
 nginx:
   image: nginx:alpine
   port: 80
+  nodePort: 30002
 
 ingress:
   enabled: true
