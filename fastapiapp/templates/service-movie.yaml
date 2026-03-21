@@ -5,13 +5,13 @@ metadata:
   labels:
     app: movie-service
 spec:
-  type: NodePort
+  type: ClusterIP # NodePort
   selector:
     app: movie-service
   ports:
-    - name: http
-      protocol: TCP
+    - protocol: TCP
       port: 80
       targetPort: {{ .Values.movie.port }}
-      nodePort: {{ .Values.movie.nodePort }}
+      # name: http
+      # nodePort: {{ .Values.movie.nodePort }}
       
