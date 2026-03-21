@@ -5,7 +5,7 @@ metadata:
   labels:
     app: movie-service
 spec:
-  type: NodePort # ClusterIP 
+  type: ClusterIP # NodePort
   selector:
     app: movie-service
   ports:
