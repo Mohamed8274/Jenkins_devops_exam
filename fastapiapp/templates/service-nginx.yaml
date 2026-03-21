@@ -5,7 +5,7 @@ metadata:
   labels:
     app: nginx
 spec:
-  type: NodePort # ClusterIP
+  type: ClusterIP # NodePort
   selector:
     app: nginx
   ports:
@@ -13,5 +13,5 @@ spec:
       protocol: TCP
       port: 80
       targetPort: {{ .Values.nginx.port }}
-      nodePort: {{ .Values.nginx.nodePort }}
+      # nodePort: {{ .Values.nginx.nodePort }}
 
