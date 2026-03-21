@@ -15,6 +15,6 @@ spec:
               service:
                 name: nginx
                 port:
-                  name: http
+                  # name: http
                   number: {{ .Values.nginx.port }}
 {{- end }}
