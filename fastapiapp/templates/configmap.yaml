@@ -9,10 +9,10 @@ data:
       server_name {{ .Values.ingress.host }};
 
       location /api/v1/movies {
-        proxy_pass http://movie-service:80; # Nom du Service K8s pour les films
+        proxy_pass http://movie-service:8000; # Nom du Service K8s pour les films
       }
 
       location /api/v1/casts {
-        proxy_pass http://cast-service:80;  # Nom du Service K8s pour les casts
+        proxy_pass http://cast-service:8000;  # Nom du Service K8s pour les casts
       }
     }
