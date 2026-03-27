@@ -4,7 +4,7 @@ kind: Ingress
 metadata:
   name: rancher-ingress # movie-app-ingress
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
+    cert-manager.io/cluster-issuer: {{ .Values.certmanager.clusterIssuer }}
 spec:
   ingressClassName: {{ .Values.ingress.className }}
   tls:

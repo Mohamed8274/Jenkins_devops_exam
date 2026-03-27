@@ -36,3 +36,8 @@ persistence:
   size: 5Gi
   storageClass: local-path
 
+certmanager:
+  clusterIssuer: letsencrypt-prod
+  
+
+
