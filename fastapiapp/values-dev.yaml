@@ -35,7 +35,6 @@ ingress:
 persistence:
   size: 5Gi
   storageClass: local-path
-  # existingClaim:
 
 certmanager:
   clusterIssuer: letsencrypt-dev
