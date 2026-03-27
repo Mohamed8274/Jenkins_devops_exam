@@ -2,9 +2,15 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: movie-app-ingress
+  name: rancher-ingress # movie-app-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: {{ .Values.ingress.className }}
+  tls:
+    - secretName: rancher-secret
+      hosts:
+        - {{ .Values.ingress.host }}
   rules:
     - host: {{ .Values.ingress.host }}
       http:
@@ -17,8 +23,4 @@ spec:
                 port:
                   name: http
                   # number: {{ .Values.nginx.port }}
-  tls:
-    - hosts:
-        - {{ .Values.ingress.host }}
-      secretName: {{ .Values.ingress.host }}-tls
 {{- end }}
