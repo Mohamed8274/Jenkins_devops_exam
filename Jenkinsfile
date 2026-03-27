@@ -155,9 +155,10 @@ stages {
       cat $KUBECONFIG > .kube/config
       cp fastapiapp/values-staging.yaml values.yml
       cat values.yml
-      sed -i "s/^\([[:space:]]*tag:\).*/\1 ${DOCKER_TAG}/" values.yml
+      sed -i "s/^\([[:space:]]*tag:\).*/\1 ${DOCKER_TAG}/" values.yml 
       helm upgrade --install fastapp fastapiapp --values=values.yml --namespace staging --set movie.image.tag="$DOCKER_TAG" --set cast.image.tag="$DOCKER_TAG" 
       '''
+      // sed -i "s+tag.*+tag: ${DOCKER_TAG}+g" values.yml
       }
     }
   }

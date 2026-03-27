@@ -23,7 +23,7 @@ postgres:
     POSTGRES_DB: db
 
 nginx:
-  image: nginx:1.29.6-alpine # nginx:alpine nginx:1.29.6 
+  image: nginx:1.29.6-alpine # nginx:alpine
   port: 80
   # nodePort: 30000
 
