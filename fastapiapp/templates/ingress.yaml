@@ -17,4 +17,8 @@ spec:
                 port:
                   name: http
                   # number: {{ .Values.nginx.port }}
+  tls:
+    - hosts:
+        - {{ .Values.ingress.host }}
+      secretName: {{ .Values.ingress.host }}-tls
 {{- end }}
