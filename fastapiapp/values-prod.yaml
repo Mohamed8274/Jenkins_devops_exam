@@ -39,5 +39,3 @@ persistence:
 certmanager:
   clusterIssuer: letsencrypt-prod
   
-
-

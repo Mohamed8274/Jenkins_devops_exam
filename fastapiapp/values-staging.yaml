@@ -38,4 +38,3 @@ persistence:
 
 certmanager:
   clusterIssuer: letsencrypt-staging
-

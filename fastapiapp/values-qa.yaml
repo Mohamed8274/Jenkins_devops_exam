@@ -39,4 +39,3 @@ persistence:
 certmanager:
   clusterIssuer: letsencrypt-qa
 
-  
